@@ -4,18 +4,12 @@ import { Component } from "react";
 import { Card } from "react-bootstrap";
 
 class SingleBook extends Component {
-  state = {
-    selected: false,
-  };
   render() {
     return (
       <Card
         id="card"
         key={this.props.book.asin}
-        onClick={() => this.setState({ selected: !this.state.selected })}
-        style={{
-          border: this.state.selected ? "4px solid red" : "none",
-        }}>
+        onClick={(e) => this.props.showComments(e.target.comment)}>
         <Card.Img
           className="card-img"
           variant="top"

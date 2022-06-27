@@ -7,14 +7,15 @@ class CommentArea extends Component {
   state = {
     comments: [],
   };
-
   componentDidMount = () => {
     this.fetchComments();
   };
 
   fetchComments = async () => {
     try {
-      const url = "https://striveschool-api.herokuapp.com/api/comments/";
+      const url =
+        "https://striveschool-api.herokuapp.com/api/comments/" +
+        this.props.asin;
 
       const response = await fetch(url, {
         headers: {

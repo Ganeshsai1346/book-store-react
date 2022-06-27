@@ -1,3 +1,9 @@
+/** @format */
+
+body {
+  background-color: #282c34 !important;
+  color: white !important;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +41,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+.card-text {
+  font-size: 13px;
 }

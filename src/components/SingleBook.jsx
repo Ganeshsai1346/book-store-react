@@ -8,8 +8,9 @@ class SingleBook extends Component {
     return (
       <Card
         id="card"
-        key={this.props.book.asin}
-        onClick={(e) => this.props.showComments(e.target.comment)}>
+        onClick={() => {
+          this.props.showComments(this.props.book.asin);
+        }}>
         <Card.Img
           className="card-img"
           variant="top"

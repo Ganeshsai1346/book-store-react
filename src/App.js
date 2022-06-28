@@ -8,12 +8,12 @@ import { Component } from 'react';
 
 class App extends Component {
   state = {
-    selected: undefined,
+    asin: ""
   };
 
-  showComments = (newValue) => {
+  showComments = (newAsin) => {
     this.setState(
-      { selected: newValue }
+      { asin: newAsin }
     )
   }
 
@@ -22,8 +22,8 @@ class App extends Component {
       <div className="App">
         <Container>
           <Row>
-            <Col md={6}><BookList books={scifiBooks} /></Col>
-            <Col md={6}><CommentArea selected={this.state.selected} /></Col>
+            <Col md={8}><BookList books={scifiBooks} showComments={this.showComments} /></Col>
+            <Col md={4}><CommentArea asin={this.state.asin} /></Col>
           </Row>
         </Container>
       </div>

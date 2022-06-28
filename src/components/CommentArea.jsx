@@ -1,14 +1,15 @@
 /** @format */
 
 import { Component } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import CommentList from "./CommentList";
+import { ListGroup } from "react-bootstrap";
 
 class CommentArea extends Component {
   state = {
     comments: [],
   };
   componentDidMount = () => {
-    if (this.props.asin) this.fetchComments(this.props.asin);
+    if (this.props.asin) this.fetchComments();
   };
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -44,24 +45,14 @@ class CommentArea extends Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          <h1>Book comments</h1>
-          {this.state.comments &&
-            this.state.comments.map((comment, index) => (
-              <Col md={6} key={index}>
-                <Card className="mb-2 text-dark">
-                  <Card.Body>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      Rating ={comment.rate}
-                    </Card.Subtitle>
-                    <Card.Text>{comment.comment}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-        </Row>
-      </Container>
+      <>
+        <h1>Book comments</h1>
+        {this.state.comments && (
+          <ListGroup>
+            <CommentList allComments={this.state.comments} />
+          </ListGroup>
+        )}
+      </>
     );
   }
 }

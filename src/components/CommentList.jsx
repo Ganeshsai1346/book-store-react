@@ -8,7 +8,9 @@ class CommentList extends Component {
     return (
       this.props.allComments &&
       this.props.allComments.map((comment) => (
-        <SingleComment bookComment={comment} />
+        <li key={comment._id}>
+          <SingleComment bookComment={comment} />
+        </li>
       ))
     );
   }

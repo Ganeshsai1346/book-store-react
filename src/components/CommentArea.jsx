@@ -13,18 +13,18 @@ class CommentArea extends Component {
 
   componentDidUpdate = (prevProps, prevState) => {
     if (this.props.asin && prevProps.asin !== this.props.asin) {
-      this.fetchComments(this.props.asin);
+      this.fetchComments();
     }
   };
-  fetchComments = async (asin) => {
+  fetchComments = async () => {
     try {
       const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin,
+        "https://striveschool-api.herokuapp.com/api/comments/" +
+          this.props.asin,
         {
-          method: "GET",
           headers: {
-            "Authorization":
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmEzMzk4MjdmZmQ0OTAwMTU4YTdhOTkiLCJpYXQiOjE2NTU5ODgwMTMsImV4cCI6MTY1NzE5NzYxM30.uQGe2ERfSABRxFLzCUKoCFbg5TV6X0us_P_-TI9n-Us",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmEzM2RmMDdmZmQ0OTAwMTU4YTdhOWEiLCJpYXQiOjE2NTU5ODQ3NTAsImV4cCI6MTY1NzE5NDM1MH0.eq4eTFEZTokG0XppZERDfyrOXMSWXsviQ2Is8_YCqN4",
           },
         }
       );
@@ -55,7 +55,7 @@ class CommentArea extends Component {
                     <Card.Subtitle className="mb-2 text-muted">
                       Rating ={comment.rate}
                     </Card.Subtitle>
-                    <Card.Text>CommentArea:{comment.comment}</Card.Text>
+                    <Card.Text>{comment.comment}</Card.Text>
                   </Card.Body>
                 </Card>
               </Col>
